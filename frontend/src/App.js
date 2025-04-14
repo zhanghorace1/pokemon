@@ -4,9 +4,20 @@ function App() {
     const [pokemon, setPokemon] = useState(null);
     const [query, setQuery] = useState('');
 
+    // const fetchPokemon = async () => {
+    //     try {
+    //         const response = await fetch(`http://localhost:5000/api/pokemon/${query}`);
+    //         const data = await response.json();
+    //         setPokemon(data);
+    //     } catch (error) {
+    //         console.error('Error fetching Pokemon:', error);
+    //     }
+    // };
+
     const fetchPokemon = async () => {
+        const backendUrl = process.env.REACT_APP_BACKEND_URL;
         try {
-            const response = await fetch(`http://localhost:5000/api/pokemon/${query}`);
+            const response = await fetch(`${backendUrl}/api/pokemon/${query}`);
             const data = await response.json();
             setPokemon(data);
         } catch (error) {
